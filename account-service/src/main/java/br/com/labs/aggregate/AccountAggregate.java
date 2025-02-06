@@ -28,6 +28,7 @@ public class AccountAggregate {
     // Command Handlers
     @CommandHandler
     public AccountAggregate(CreateAccountCommand cmd) {
+        System.out.println("1");
         // Aqui poderíamos validar se o CPF já existe
         // mas isso normalmente exige uma checagem no Query side ou
         // alguma consistência externa.
@@ -42,6 +43,7 @@ public class AccountAggregate {
 
     @CommandHandler
     public void handle(DepositMoneyCommand cmd) {
+        System.out.println("4");
         if (cmd.getAmount() <= 0) {
             throw new IllegalArgumentException("Valor de depósito deve ser positivo.");
         }
@@ -50,6 +52,7 @@ public class AccountAggregate {
 
     @CommandHandler
     public void handle(WithdrawMoneyCommand cmd) {
+        System.out.println("5");
         if (cmd.getAmount() <= 0) {
             throw new IllegalArgumentException("Valor de saque deve ser positivo.");
         }
@@ -62,6 +65,7 @@ public class AccountAggregate {
     // Event Sourcing Handlers
     @EventSourcingHandler
     public void on(AccountCreatedEvent event) {
+        System.out.println("6");
         this.cpf = event.getCpf();
         this.nomeTitular = event.getNomeTitular();
         this.balance = event.getInitialBalance();
@@ -69,11 +73,13 @@ public class AccountAggregate {
 
     @EventSourcingHandler
     public void on(MoneyDepositedEvent event) {
+        System.out.println("7");
         this.balance += event.getAmount();
     }
 
     @EventSourcingHandler
     public void on(MoneyWithdrawnEvent event) {
+        System.out.println("8");
         this.balance -= event.getAmount();
     }
 }

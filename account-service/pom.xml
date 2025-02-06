@@ -9,8 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+
         <spring.boot.version>3.0.2</spring.boot.version>
         <axon.version>4.10.3</axon.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
