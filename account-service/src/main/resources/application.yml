@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+axon:
+  axonserver:
+    servers: localhost:8124
+    # Se quiser que o nome da aplicação apareça no painel do Axon Server:
+    application-name: account-service
+  # Se quiser usar token de conexão, etc., configurar aqui.
+
+spring:
+# Se estivesse usando JPA/H2, configuraria aqui...
