@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: bank_query_db
+  datasource:
+    url: jdbc:mysql://localhost:3306/axon_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: rootpassword
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+axon:
+  axonserver:
+    servers: localhost:8124
+    application-name: query-service
+  eventhandling:
+    # Aqui, "queryProcessor" é o nome do processador que você deseja configurar;
+    # se não definir explicitamente, o Axon criará um para cada handler ou baseado no pacote.
+    processors:
+      queryProcessor:
+        mode: tracking
+        # Se não houver token persistido, começa a processar somente os eventos novos
+        initialTrackingToken: HEAD
+    # Configura para usar o MongoDB para persistir os tokens de rastreamento
