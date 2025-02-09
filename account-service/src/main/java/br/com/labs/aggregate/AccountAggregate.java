@@ -62,7 +62,7 @@ public class AccountAggregate {
         apply(new MoneyWithdrawnEvent(cmd.getCpf(), cmd.getAmount()));
     }
 
-    // Event Sourcing Handlers
+    // Event Sourcing Handlersß
     @EventSourcingHandler
     public void on(AccountCreatedEvent event) {
         System.out.println("6");

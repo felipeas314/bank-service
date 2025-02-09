@@ -6,6 +6,7 @@ public class AccountCreatedEvent {
     private final String nomeTitular;
     private final double initialBalance;
 
+
     public AccountCreatedEvent(String cpf, String nomeTitular, double initialBalance) {
         this.cpf = cpf;
         this.nomeTitular = nomeTitular;

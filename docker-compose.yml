@@ -18,6 +18,18 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
+  
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: axon_db
+      MYSQL_USER: axon
+      MYSQL_PASSWORD: axonpassword
+    ports:
+      - "3306:3306"
 
 volumes:
   axonserver-data:
